@@ -1,9 +1,19 @@
 import Validator from '../Validator.js';
 
-const sortObj = {};
-const forSort = [];
-const result = [];
+const datalist = [
+  ['Anatol-101_ivanov', true],
+  ['Anatol-1010_ivanov', false],
+  ['1Anatol-101_ivanov', false],
+  ['Anatol-101_ivanov1', false],
+  ['-Anatol-101_ivanov', false],
+  ['Anatol-101_ivanov-', false],
+  ['_Anatol-101_ivanov', false],
+  ['Anatol-101_ivanov_', false],
+];
 
-test('Validate', () => {
-  expect(Validate(sortObj, forSort)).toEqual(result);
+const handler = test.each(datalist);
+
+handler('test for %s', (username, valid) => {
+  const validator = new Validator();
+  expect(validator.validateUsername(username)).toBe(valid);
 });

@@ -1,3 +1,3 @@
 import Validator from './Validator.js';
 
-console.log('app worked');
+console.log('app worked', Validator);
